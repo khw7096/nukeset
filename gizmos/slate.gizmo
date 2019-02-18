@@ -1,0 +1,223 @@
+#! /home/woong/Nuke11.3v1/libnuke-11.3.1.so -nx
+version 11.3 v1
+Gizmo {
+ addUserKnob {20 User}
+ addUserKnob {1 vender t "print left top position"}
+ vender vender
+ addUserKnob {1 shot -STARTLINE}
+ shot FOO_0010
+ addUserKnob {1 user}
+ user username
+ addUserKnob {4 task -STARTLINE M {comp light rnd "" "" ""}}
+ addUserKnob {3 version -STARTLINE}
+ version 1
+ addUserKnob {1 memo}
+ memo memo
+ addUserKnob {3 offset}
+ offset 10
+ addUserKnob {7 fontsize R 0 2}
+ fontsize 0.8
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 192
+  ypos -160
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "\[value parent.shot]"
+  old_message {{70 79 79 95 48 48 49 48}
+    }
+  old_expression_markers {{0 7}
+    }
+  box {0 {"height - (100 * global_font_scale) - parent.offset"} {width} {height-parent.offset}}
+  xjustify center
+  transforms {{0 2}
+    }
+  cursor_position 18
+  font {{ Liberation Mono : Regular : liberation/LiberationMono-Regular.ttf : 0 }}
+  global_font_scale {{"width * 0.0003 * parent.fontsize"}}
+  center {1024 484}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 968}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 1024 484 0 0 1 1 0 0 0 0}
+    }
+  enable_background true
+  background_opacity 0.5
+  background_border_x {{width}}
+  background_border_y {{parent.offset}}
+  name topCenter
+  xpos 192
+  ypos -120
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "\[value parent.vender]"
+  old_message {{118 101 110 100 101 114}
+    }
+  old_expression_markers {{0 5}
+    }
+  box {{parent.offset} {"height - (100 * global_font_scale)-parent.offset"} {width} {height-parent.offset}}
+  transforms {{0 2}
+    }
+  font_size_values {{0 100 0 50}
+    }
+  font_width_values {{0 100 0 50}
+    }
+  font_height_values {{0 100 0 50}
+    }
+  cursor_position 21
+  font {{ Liberation Mono : Regular : liberation/LiberationMono-Regular.ttf : 0 }}
+  global_font_scale {{width*0.0003*fontsize}}
+  center {1024 484}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 968}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 1024 484 0 0 1 1 0 0 0 0}
+    }
+  name topLeft
+  xpos 192
+  ypos -96
+ }
+set N7754f0c0 [stack 0]
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "\[date %y]\[date %m]\[date %d] \[date %T]"
+  old_message {{49 57 48 50 49 56 32 49 52 58 48 51 58 51 52}
+    }
+  old_expression_markers {{0 1 2 3 4 5 7 14}
+    }
+  box {0 {"height - (100 * global_font_scale)-parent.offset"} {width-parent.offset} {height-parent.offset}}
+  xjustify right
+  transforms {{0 2}
+    }
+  cursor_position 36
+  font {{ Liberation Mono : Regular : liberation/LiberationMono-Regular.ttf : 0 }}
+  global_font_scale {{width*0.0003*parent.fontsize}}
+  center {1024 484}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 968}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 1024 484 0 0 1 1 0 0 0 0}
+    }
+  name topRight
+  xpos 192
+  ypos -72
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "\[value parent.memo]"
+  old_message {{109 101 109 111}
+    }
+  old_expression_markers {{0 3}
+    }
+  box {0 {parent.offset} {width} {100*global_font_scale}}
+  xjustify center
+  yjustify bottom
+  transforms {{0 2}
+    }
+  cursor_position 13
+  font {{ Liberation Mono : Regular : liberation/LiberationMono-Regular.ttf : 0 }}
+  global_font_scale {{width*0.0003*parent.fontsize}}
+  center {1024 484}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 968}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 1024 484 0 0 1 1 0 0 0 0}
+    }
+  enable_background true
+  background_opacity 0.5
+  background_border_x {{width}}
+  background_border_y {{parent.offset}}
+  name bottomCenter
+  xpos 192
+  ypos -48
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "\[value parent.user] \[value parent.task] v\[format %03d \[value parent.version]]"
+  old_message {{117 115 101 114 110 97 109 101 32 99 111 109 112 32 118 48 48 49}
+    }
+  old_expression_markers {{0 7 9 12 15 17}
+    }
+  box {{parent.offset} {parent.offset} {width} {100*global_font_scale}}
+  yjustify bottom
+  transforms {{0 2}
+    }
+  cursor_position 75
+  font {{ Liberation Mono : Regular : liberation/LiberationMono-Regular.ttf : 0 }}
+  global_font_scale {{width*0.0003*parent.fontsize}}
+  center {1024 484}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 968}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 1024 484 0 0 1 1 0 0 0 0}
+    }
+  name bottomLeft
+  xpos 192
+  ypos -24
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "\[metadata input/timecode] \[format %06d \[frame]]"
+  old_message {{48 48 58 51 49 58 48 54 58 50 50 32 48 52 52 56 48 54}
+    }
+  old_expression_markers {{0 10 12 17}
+    }
+  box {0 {parent.offset} {width-parent.offset} {100*global_font_scale}}
+  xjustify right
+  yjustify bottom
+  transforms {{0 2}
+    }
+  font {{ Liberation Mono : Regular : liberation/LiberationMono-Regular.ttf : 0 }}
+  global_font_scale {{width*0.0003*parent.fontsize}}
+  center {1024 484}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 968}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 1024 484 0 0 1 1 0 0 0 0}
+    }
+  name bottomRight
+  selected true
+  xpos 192
+ }
+ Output {
+  name Output1
+  xpos 192
+  ypos 51
+ }
+push $N7754f0c0
+ Viewer {
+  frame_range 44458-44937
+  viewerProcess "sRGB (ACES)"
+  name Viewer1
+  xpos 302
+  ypos -96
+ }
+end_group
