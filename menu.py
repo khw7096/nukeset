@@ -1,6 +1,7 @@
 import nuke
 import nukescripts
 import checkenv
+import openfile
 
 tb = nuke.toolbar("Nodes")
 m = tb.addMenu("Lazypic", icon="lazypic_logo.png")
@@ -14,3 +15,4 @@ mb.addCommand("-","","")
 mb.addCommand("StartPerformanceTimers", "nuke.startPerformanceTimers()")
 mb.addCommand("StopPerformanceTimers", "nuke.stopPerformanceTimers()")
 mb.addCommand("CheckENV", "checkenv.main()")
+mb.addCommand("OpenFile", "reload(openfile);openfile.main()", "F8", shortcutContext=2)

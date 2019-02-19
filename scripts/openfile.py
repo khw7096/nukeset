@@ -3,6 +3,7 @@ import nuke
 import nukescripts
 import os
 import subprocess
+import sys
 
 def browser(path):
 	brws = "nautilus"
@@ -15,9 +16,9 @@ def browser(path):
 	if stderr:
 		nuke.tprint(stderr, file=sys.stderr)
 	if stdout:
-		nuke.tprint(stdout, file=sys.stdout)
+		nuke.tprint(stdout)
 
-def openfile():
+def main():
 	focusKnobs = ["file","vfield_file"]
 	nodes = nuke.selectedNodes()
 	if len(nodes) != 1:
