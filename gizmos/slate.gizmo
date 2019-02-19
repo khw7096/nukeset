@@ -2,8 +2,8 @@
 version 11.3 v1
 Gizmo {
  addUserKnob {20 User}
- addUserKnob {1 vender t "print left top position"}
- vender vender
+ addUserKnob {1 vendor t "print left top position"}
+ vendor vendor
  addUserKnob {1 shot -STARTLINE}
  shot FOO_0010
  addUserKnob {1 user}
@@ -60,7 +60,7 @@ Gizmo {
   font_size_toolbar 100
   font_width_toolbar 100
   font_height_toolbar 100
-  message "\[value parent.vender]"
+  message "\[value parent.vendor]"
   old_message {{118 101 110 100 101 114}
     }
   old_expression_markers {{0 5}
