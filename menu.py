@@ -15,6 +15,7 @@ mb.addCommand("Issue_and_Bugs", "nukescripts.start('https://github.com/lazypic/n
 mb.addCommand("-","","")
 mb.addCommand("StartPerformanceTimers", "nuke.startPerformanceTimers()")
 mb.addCommand("StopPerformanceTimers", "nuke.stopPerformanceTimers()")
+mb.addCommand("-","","")
 mb.addCommand("CheckENV", "checkenv.main()")
 mb.addCommand("OpenFile", "reload(openfile);openfile.main()", "F8", shortcutContext=2)
 mb.addCommand("MakeWrite", "reload(makewrite);makewrite.main()", "F10", shortcutContext=2)
