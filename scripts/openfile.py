@@ -1,6 +1,5 @@
 #!coding:utf8
 import nuke
-import nukescripts
 import os
 import subprocess
 import sys
