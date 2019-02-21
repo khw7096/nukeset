@@ -1,6 +1,7 @@
 #coding:utf8
 import nuke
 import os
+import pathapi
 from PySide2.QtWidgets import *
 
 class MakeWrite(QWidget):
@@ -63,6 +64,24 @@ class MakeWrite(QWidget):
 	def genSlate(self):
 		slate = nuke.nodes.slate()
 		slate["vendor"].setValue("lazypic")
+		slate["user"].setValue(os.getenv("USER"))
+		slate["memo"].setValue(" ")
+		p = nuke.root().name()
+		seq, err = pathapi.seq(p)
+		if err:
+			nuke.tprint(err)
+		shot, err = pathapi.shot(p)
+		if err:
+			nuke.tprint(err)
+		slate["shot"].setValue(seq+"_"+shot)
+		task, err = pathapi.task(p)
+		if err:
+			nuke.tprint(err)
+		slate["task"].setValue(task)
+		ver, err = pathapi.ver(p)
+		if err:
+			nuke.tprint(err)
+		slate["version"].setValue(ver)
 		self.linkOrder.append(slate)
 
 	def genWrite(self):
@@ -86,7 +105,7 @@ class MakeWrite(QWidget):
 
 	def pushOK(self):
 		"""
-		OK버튼을 누르면 노드를 생성한다.
+		OK 버튼을 누르면 노드를 생성한다.
 		"""
 		if self.reformat.isChecked():
 			self.genReformat()
