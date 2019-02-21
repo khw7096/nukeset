@@ -22,11 +22,11 @@ class MakeWrite(QWidget):
 		self.startframe = QLineEdit(str(int(nuke.Root()["first_frame"].value())))
 		self.starttimecode = QLineEdit("00:00:00:00")
 
-		# event
+		# 이벤트 설정
 		self.ok.clicked.connect(self.pushOK)
 		self.cancel.clicked.connect(self.close)
 
-		#set layout
+		# Layout 설정
 		layout = QGridLayout()
 		layout.addWidget(self.reformat, 0, 0)
 		layout.addWidget(self.fm, 0, 1)
@@ -71,8 +71,19 @@ class MakeWrite(QWidget):
 		write["create_directories"].setValue(True)
 		self.linkOrder.append(write)
 
+	def linkNodes(self):
+		"""
+		linkOrder 노드 순서대로 노드를 연결,생성한다.
+		"""
+		tail = nuke.selectedNode()
+		for n in self.linkOrder:
+			n.setInput(0, tail)
+			tail = n
+
 	def pushOK(self):
-		# 체크박스가 켜있다면, 노드를 생성한다.
+		"""
+		체크박스가 켜있다면, 노드를 생성한다.
+		"""
 		if self.reformat.isChecked():
 			self.genReformat()
 		if self.addtimecode.isChecked():
@@ -80,12 +91,7 @@ class MakeWrite(QWidget):
 		if self.slate.isChecked():
 			self.genSlate()
 		self.genWrite()
-
-		# linkOrder 노드 순서대로 노드를 연결,생성한다.
-		tail = nuke.selectedNode()
-		for n in self.linkOrder:
-			n.setInput(0, tail)
-			tail = n
+		self.linkNodes()
 		self.close()
 
 def main():
