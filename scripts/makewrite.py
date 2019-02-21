@@ -12,9 +12,8 @@ class MakeWrite(QWidget):
 		self.ext = QComboBox()
 		self.exts = [".exr",".dpx",".tga",".mov"]
 		self.ext.addItems(self.exts)
-		self.fm = QComboBox()
-		self.formats = ["2048x1152", "1920x1080", "2048x872"]
-		self.fm.addItems(self.formats)
+		self.formats = QComboBox()
+		self.formats.addItems(["2048x1152", "1920x1080", "2048x872"])
 		self.reformat = QCheckBox("&reformat", self)
 		self.reformat.setChecked(True)
 		self.slate = QCheckBox("&slate", self)
@@ -31,15 +30,15 @@ class MakeWrite(QWidget):
 		# Layout 설정
 		layout = QGridLayout()
 		layout.addWidget(self.reformat, 0, 0)
-		layout.addWidget(self.fm, 0, 1)
+		layout.addWidget(self.formats, 0, 1)
 		layout.addWidget(self.addtimecode, 1, 0)
 		layout.addWidget(self.startframe, 1, 1)
 		layout.addWidget(self.starttimecode, 1, 2)
 		layout.addWidget(self.slate, 2, 0)
 		layout.addWidget(QLabel("Ext"), 3, 0)
 		layout.addWidget(self.ext, 3, 1)
-		layout.addWidget(self.cancel, 4, 0)
-		layout.addWidget(self.ok, 4, 1)
+		layout.addWidget(self.cancel, 4, 1)
+		layout.addWidget(self.ok, 4, 2)
 		self.setLayout(layout)
 
 		# node list
@@ -49,7 +48,7 @@ class MakeWrite(QWidget):
 		reformat = nuke.nodes.Reformat()
 		reformat["type"].setValue("to box")
 		reformat["box_fixed"].setValue(True)
-		width, height = self.fm.currentText().split("x")
+		width, height = self.formats.currentText().split("x")
 		reformat["box_width"].setValue(int(width))
 		reformat["box_height"].setValue(int(height))
 		self.linkOrder.append(reformat)
@@ -117,10 +116,17 @@ class MakeWrite(QWidget):
 		self.linkNodes()
 		self.close()
 
-def main():
+def checkCondition():
+	if nuke.root().name() == "Root":
+		nuke.message("파일을 저장해주세요.")
+		return
+
 	if len(nuke.selectedNodes()) != 1:
 		nuke.message("노드를 하나만 선택해주세요.")
 		return
+
+def main():
+	checkCondition()
 	global customApp
 	try:
 		customApp.close()
