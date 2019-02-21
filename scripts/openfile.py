@@ -10,12 +10,16 @@ def browser(path):
 		brws = "start"
 	elif sys.platform == "darwin":
 		brws = "open"
+	subprocess.Popen([brws, path], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	#Debug
+	"""
 	p = subprocess.Popen([brws, path], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	stdout, stderr = p.communicate()
 	if stderr:
 		nuke.tprint(stderr, file=sys.stderr)
 	if stdout:
 		nuke.tprint(stdout)
+	"""
 
 def main():
 	focusKnobs = ["file","vfield_file"]

@@ -1,5 +1,6 @@
 #coding:utf8
 import nuke
+import os
 from PySide2.QtWidgets import *
 
 class MakeWrite(QWidget):
@@ -65,9 +66,11 @@ class MakeWrite(QWidget):
 
 	def genWrite(self):
 		write = nuke.nodes.Write()
+		dirname, basename = os.path.split(nuke.root().name())
+		filename, notuse = os.path.splitext(basename)
 		ext = str(self.ext.currentText())
 		write["file_type"].setValue(ext[1:])
-		write["file"].setValue("/test/test.####" + ext)
+		write["file"].setValue("%s/out/%s/%s.####%s" % (dirname, filename, filename, ext))
 		write["create_directories"].setValue(True)
 		self.linkOrder.append(write)
 
