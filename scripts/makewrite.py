@@ -42,6 +42,10 @@ class MakeWrite(QWidget):
 
 		# node list
 		self.linkOrder = []
+		self.seqname = ""
+		self.shotname = ""
+		self.taskname = ""
+		self.ver = 1
 
 	def genReformat(self):
 		reformat = nuke.nodes.Reformat()
@@ -60,25 +64,25 @@ class MakeWrite(QWidget):
 		self.linkOrder.append(addTimecode)
 
 	def genSlate(self):
+		p = nuke.root().name()
+		seq, err = pathapi.seq(p)
+		if err:
+			nuke.message(err)
+		shot, err = pathapi.shot(p)
+		if err:
+			nuke.message(err)
+		task, err = pathapi.task(p)
+		if err:
+			nuke.message(err)
+		ver, err = pathapi.ver(p)
+		if err:
+			nuke.message(err)
 		slate = nuke.nodes.slate()
 		slate["vendor"].setValue("lazypic")
 		slate["user"].setValue(os.getenv("USER"))
 		slate["memo"].setValue(" ")
-		p = nuke.root().name()
-		seq, err = pathapi.seq(p)
-		if err:
-			nuke.tprint(err)
-		shot, err = pathapi.shot(p)
-		if err:
-			nuke.tprint(err)
 		slate["shot"].setValue(seq+"_"+shot)
-		task, err = pathapi.task(p)
-		if err:
-			nuke.tprint(err)
 		slate["task"].setValue(task)
-		ver, err = pathapi.ver(p)
-		if err:
-			nuke.tprint(err)
 		slate["version"].setValue(ver)
 		self.linkOrder.append(slate)
 
@@ -115,17 +119,14 @@ class MakeWrite(QWidget):
 		self.linkNodes()
 		self.close()
 
-def checkCondition():
+def main():
 	if nuke.root().name() == "Root":
-		nuke.message("파일을 저장해주세요.")
+		nuke.message("파일이 저장되지 않았습니다.")
 		return
 
 	if len(nuke.selectedNodes()) != 1:
 		nuke.message("노드를 하나만 선택해주세요.")
 		return
-
-def main():
-	checkCondition()
 	global customApp
 	try:
 		customApp.close()
