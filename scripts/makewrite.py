@@ -62,6 +62,7 @@ class MakeWrite(QWidget):
 
 	def genSlate(self):
 		slate = nuke.nodes.slate()
+		slate["vendor"].setValue("lazypic")
 		self.linkOrder.append(slate)
 
 	def genWrite(self):
