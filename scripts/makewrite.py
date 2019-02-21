@@ -3,7 +3,6 @@ import nuke
 from PySide2.QtWidgets import *
 
 class MakeWrite(QWidget):
-
 	def __init__(self):
 		super(MakeWrite, self).__init__()
 		self.ok = QPushButton("OK")
