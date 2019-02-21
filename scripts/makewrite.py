@@ -10,8 +10,7 @@ class MakeWrite(QWidget):
 		self.ok = QPushButton("OK")
 		self.cancel = QPushButton("Cancel")
 		self.ext = QComboBox()
-		self.exts = [".exr",".dpx",".tga",".mov"]
-		self.ext.addItems(self.exts)
+		self.ext.addItems([".exr",".dpx",".jpg",".png",".mov"])
 		self.formats = QComboBox()
 		self.formats.addItems(["2048x1152", "1920x1080", "2048x872"])
 		self.reformat = QCheckBox("&reformat", self)
