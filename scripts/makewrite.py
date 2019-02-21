@@ -82,7 +82,7 @@ class MakeWrite(QWidget):
 
 	def pushOK(self):
 		"""
-		체크박스가 켜있다면, 노드를 생성한다.
+		OK버튼을 누르면 노드를 생성한다.
 		"""
 		if self.reformat.isChecked():
 			self.genReformat()
