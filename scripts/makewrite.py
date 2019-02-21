@@ -23,7 +23,7 @@ class MakeWrite(QWidget):
 		self.starttimecode = QLineEdit("00:00:00:00")
 
 		# event
-		self.ok.clicked.connect(self.bt_ok)
+		self.ok.clicked.connect(self.pushOK)
 		self.cancel.clicked.connect(self.close)
 
 		#set layout
@@ -40,33 +40,50 @@ class MakeWrite(QWidget):
 		layout.addWidget(self.ok, 4, 1)
 		self.setLayout(layout)
 
-	def bt_ok(self):
-		tail = nuke.selectedNode()
-		linkOrder = []
-		if self.reformat.isChecked():
-			reformat = nuke.nodes.Reformat()
-			reformat["type"].setValue("to box")
-			reformat["box_fixed"].setValue(True)
-			width, height = self.fm.currentText().split("x")
-			reformat["box_width"].setValue(int(width))
-			reformat["box_height"].setValue(int(height))
-			linkOrder.append(reformat)
-		if self.addtimecode.isChecked():
-			timecode = nuke.nodes.AddTimeCode()
-			timecode["startcode"].setValue(str(self.starttimecode.text()))
-			timecode["useFrame"].setValue(True)
-			timecode["frame"].setValue(int(self.startframe.text()))
-			linkOrder.append(timecode)
-		if self.slate.isChecked():
-			slate = nuke.nodes.slate()
-			linkOrder.append(slate)
+		# node list
+		self.linkOrder = []
+
+	def genReformat(self):
+		reformat = nuke.nodes.Reformat()
+		reformat["type"].setValue("to box")
+		reformat["box_fixed"].setValue(True)
+		width, height = self.fm.currentText().split("x")
+		reformat["box_width"].setValue(int(width))
+		reformat["box_height"].setValue(int(height))
+		self.linkOrder.append(reformat)
+	
+	def genAddTimecode(self):
+		addTimecode = nuke.nodes.AddTimeCode()
+		addTimecode["startcode"].setValue(str(self.starttimecode.text()))
+		addTimecode["useFrame"].setValue(True)
+		addTimecode["frame"].setValue(int(self.startframe.text()))
+		self.linkOrder.append(addTimecode)
+
+	def genSlate(self):
+		slate = nuke.nodes.slate()
+		self.linkOrder.append(slate)
+
+	def genWrite(self):
 		write = nuke.nodes.Write()
 		ext = str(self.ext.currentText())
 		write["file_type"].setValue(ext[1:])
 		write["file"].setValue("/test/test.####" + ext)
 		write["create_directories"].setValue(True)
-		linkOrder.append(write)
-		for n in linkOrder:
+		self.linkOrder.append(write)
+
+	def pushOK(self):
+		# 체크박스가 켜있다면, 노드를 생성한다.
+		if self.reformat.isChecked():
+			self.genReformat()
+		if self.addtimecode.isChecked():
+			self.genAddTimecode()
+		if self.slate.isChecked():
+			self.genSlate()
+		self.genWrite()
+
+		# linkOrder 노드 순서대로 노드를 연결,생성한다.
+		tail = nuke.selectedNode()
+		for n in self.linkOrder:
 			n.setInput(0, tail)
 			tail = n
 		self.close()
