@@ -1,0 +1,219 @@
+#! /home/woong/Nuke11.3v1/libnuke-11.3.1.so -nx
+version 11.3 v1
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="28" w="1920" h="981" maximized="1" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1257" stretch="1"/>
+            <splitter orientation="2">
+                <split size="547"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="384"/>
+                <dock id="" activePageId="DAG.1">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name /home/woong/app/nukeset/nk/lecutre_room.nk
+ format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode1
+ tile_color 0x71c67100
+ label "lecture room"
+ note_font_size 42
+ xpos -160
+ ypos -185
+ bdwidth 887
+ bdheight 634
+}
+Constant {
+ inputs 0
+ channels rgb
+ name Sesame_oil
+ xpos -111
+ ypos -81
+}
+Constant {
+ inputs 0
+ channels rgb
+ name Sesame_oil1
+ xpos -1
+ ypos -81
+}
+Constant {
+ inputs 0
+ channels rgb
+ name Sesame_oil2
+ xpos 109
+ ypos -81
+}
+Constant {
+ inputs 0
+ channels rgb
+ name Sesame_oil3
+ xpos 219
+ ypos -81
+}
+Constant {
+ inputs 0
+ channels rgb
+ name Sesame_oil4
+ xpos 391
+ ypos -77
+}
+Constant {
+ inputs 0
+ channels rgb
+ name Sesame_oil5
+ xpos 501
+ ypos -77
+}
+Constant {
+ inputs 0
+ channels rgb
+ name Sesame_oil6
+ xpos 611
+ ypos -77
+}
+Constant {
+ inputs 0
+ channels rgb
+ name Sesame_oil7
+ xpos -110
+ ypos 44
+}
+Constant {
+ inputs 0
+ channels rgb
+ name Sesame_oil8
+ xpos 0
+ ypos 44
+}
+Constant {
+ inputs 0
+ channels rgb
+ name Sesame_oil9
+ xpos 110
+ ypos 44
+}
+Constant {
+ inputs 0
+ channels rgb
+ name Sesame_oil10
+ xpos 220
+ ypos 44
+}
+Constant {
+ inputs 0
+ channels rgb
+ name Sesame_oil11
+ xpos 392
+ ypos 48
+}
+Constant {
+ inputs 0
+ channels rgb
+ name Sesame_oil12
+ xpos 502
+ ypos 48
+}
+Constant {
+ inputs 0
+ channels rgb
+ name Sesame_oil13
+ xpos 612
+ ypos 48
+}
+Constant {
+ inputs 0
+ channels rgb
+ name Sesame_oil14
+ xpos -110
+ ypos 160
+}
+Constant {
+ inputs 0
+ channels rgb
+ name Sesame_oil17
+ xpos 220
+ ypos 160
+}
+Constant {
+ inputs 0
+ channels rgb
+ name Sesame_oil18
+ xpos 392
+ ypos 164
+}
+Constant {
+ inputs 0
+ channels rgb
+ name Sesame_oil19
+ xpos 502
+ ypos 164
+}
+Constant {
+ inputs 0
+ channels rgb
+ name Sesame_oil20
+ xpos 612
+ ypos 164
+}
+Viewer {
+ inputs 0
+ frame 1
+ frame_range 1-100
+ name Viewer1
+ xpos -567
+ ypos 47
+}
+Constant {
+ inputs 0
+ channels rgb
+ name Sesame_oil16
+ xpos 110
+ ypos 160
+}
+Constant {
+ inputs 0
+ channels rgb
+ name kokodak
+ xpos 0
+ ypos 160
+}
+Constant {
+ inputs 0
+ channels rgb
+ name Sesame_oil21
+ xpos -108
+ ypos 301
+}

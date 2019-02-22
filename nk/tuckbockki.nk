@@ -1,0 +1,226 @@
+#! /home/woong/Nuke11.3v1/libnuke-11.3.1.so -nx
+version 11.3 v1
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="28" w="1920" h="981" maximized="1" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1515" stretch="1"/>
+            <splitter orientation="2">
+                <split size="180"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="751"/>
+                <dock id="" activePageId="DAG.1">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="357"/>
+            <dock id="" activePageId="uk.co.thefoundry.backgroundrenderview.1">
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name /home/woong/app/nukeset/nk/tuckbockki.nk
+ frame 1356
+ first_frame 1001
+ last_frame 1480
+ lock_range true
+ format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement OCIO
+ defaultViewerLUT "OCIO LUTs"
+ workingSpaceLUT "ACES - ACEScg"
+ monitorLut ACES/sRGB
+ int8Lut "Utility - sRGB - Texture"
+ int16Lut "ACES - ACEScc"
+ logLut "Input - ADX - ADX10"
+ floatLut "ACES - ACEScg"
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode1
+ tile_color 0xaaaaaa00
+ label "떡볶이 레시피"
+ note_font_size 42
+ xpos 1395
+ ypos -6
+ bdwidth 810
+ bdheight 1083
+}
+Constant {
+ inputs 0
+ channels rgb
+ name Sesame_leaf
+ xpos 1405
+ ypos 806
+}
+push 0
+Constant {
+ inputs 0
+ channels rgb
+ name egg
+ xpos 1508
+ ypos 780
+}
+Transform {
+ center {1024 778}
+ name boil1
+ xpos 1508
+ ypos 852
+}
+push 0
+Constant {
+ inputs 0
+ channels rgb
+ name Sesame_oil
+ xpos 1746
+ ypos 800
+}
+Constant {
+ inputs 0
+ channels rgb
+ name frying
+ xpos 1620
+ ypos 798
+}
+Merge2 {
+ inputs 5+1
+ name Merge6
+ xpos 1592
+ ypos 967
+}
+Constant {
+ inputs 0
+ channels rgb
+ name ramen
+ xpos 1720
+ ypos 658
+}
+Constant {
+ inputs 0
+ channels rgb
+ name sausage
+ xpos 1703
+ ypos 509
+}
+Constant {
+ inputs 0
+ channels rgb
+ name spring_onion
+ xpos 1583
+ ypos 371
+}
+Constant {
+ inputs 0
+ channels rgb
+ name onion
+ xpos 2038
+ ypos 380
+}
+Constant {
+ inputs 0
+ channels rgb
+ name fish_cake
+ xpos 1926
+ ypos 353
+}
+push 0
+Constant {
+ inputs 0
+ channels rgb
+ name rice_cake
+ xpos 1711
+ ypos 347
+}
+Constant {
+ inputs 0
+ channels rgb
+ name garlic
+ selected true
+ xpos 2109
+ ypos 231
+}
+Constant {
+ inputs 0
+ channels rgb
+ name pepper
+ xpos 2007
+ ypos 231
+}
+Constant {
+ inputs 0
+ channels rgb
+ name sugar
+ xpos 1634
+ ypos 239
+}
+Constant {
+ inputs 0
+ channels rgb
+ name msg
+ xpos 1897
+ ypos 216
+}
+push 0
+Constant {
+ inputs 0
+ channels rgb
+ name red_chile_paste
+ xpos 1769
+ ypos 225
+}
+Constant {
+ inputs 0
+ channels rgb
+ name water
+ xpos 1830
+ ypos 60
+}
+Transform {
+ center {1024 778}
+ name boil
+ xpos 1830
+ ypos 174
+}
+Merge2 {
+ inputs 6+1
+ name Merge1
+ xpos 1830
+ ypos 338
+}
+Merge2 {
+ inputs 5+1
+ name Merge2
+ xpos 1830
+ ypos 429
+}
+Merge2 {
+ inputs 2
+ name Merge3
+ xpos 1830
+ ypos 539
+}
+Merge2 {
+ inputs 2
+ name Merge5
+ xpos 1830
+ ypos 682
+}
+Merge2 {
+ inputs 2
+ name Merge4
+ xpos 1825
+ ypos 1049
+}
